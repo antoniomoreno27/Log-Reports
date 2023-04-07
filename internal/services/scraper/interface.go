@@ -1,5 +1,10 @@
 package scraper
 
 type Scraper interface {
-	Match(input string) (data []string, err error)
+	Scrape(target string) (data []string, err error)
+}
+
+type Matcher interface {
+	Match(target string) (match string, err error)
+	String() (name string)
 }
