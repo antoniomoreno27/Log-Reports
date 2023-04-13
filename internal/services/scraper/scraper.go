@@ -31,10 +31,22 @@ func (m matcher) Match(target string) (match string, err error) {
 	index := strings.Index(match, ":")
 	if index > -1 {
 		match = match[index:]
+		if err = checkMatch(match, target); err != nil {
+			return "", err
+		}
 	}
 	match = match[1:]
+	if err = checkMatch(match, target); err != nil {
+		return "", err
+	}
 	match = match[:len(match)-1]
 	return
+}
+func checkMatch(match, regexpName string) error {
+	if len(match) == 0 {
+		return fmt.Errorf("bad match %s at %s", match, regexpName)
+	}
+	return nil
 }
 
 func (m matcher) String() (name string) {

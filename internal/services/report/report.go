@@ -26,8 +26,8 @@ type ReportService struct {
 func New(cookie string, report domain.Report) (*ReportService, error) {
 	matchers := []scraper.Matcher{
 		scraper.NewRegExpMatcher("entity_id", regexp.MustCompile("/(M[A-Z]{2})?[0-9]+/")),
-		scraper.NewRegExpMatcher("entity_site", regexp.MustCompile(`site:(M[A-Z]{2})\]`)),
-		scraper.NewRegExpMatcher("error_message", regexp.MustCompile("ERROR:(.*?)-")),
+		scraper.NewRegExpMatcher("entity_site", regexp.MustCompile(`site:(M[A-Z]{2})\]|/(M[A-Z]{2})[0-9]`)),
+		scraper.NewRegExpMatcher("error_message", regexp.MustCompile(`ERROR:(.*?-|.*?\:\s|.*?\")`)),
 		scraper.NewRegExpMatcher("dump_attribute", regexp.MustCompile(`attribute:(.*?)\]`)),
 		scraper.NewRegExpMatcher("dump_resource", regexp.MustCompile(`resource:(.*?)\]`)),
 	}
@@ -86,6 +86,9 @@ func (rs *ReportService) loadData() (chan []string, error) {
 		lr, err := rs.KibanaAPIClient.Get(rs.Query, actualStart, actualStart.Add(rs.TimeWindowSample))
 		if err != nil {
 			logger.Errorf("error while getting data from kibana >> %v", err)
+			actualStart = actualStart.Add(rs.TimeWindowSample)
+			i = actualStart.Compare(rs.FinishDate)
+			continue
 		}
 		newStart := actualStart.Add(rs.TimeWindowSample)
 		if len(lr.Log.Hits) == 0 {

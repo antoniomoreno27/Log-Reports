@@ -3,6 +3,7 @@ package api
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"time"
@@ -99,6 +100,10 @@ func (kbn *KibanaAPIClient) Get(query string, startDate, finishDate time.Time) (
 		return
 	}
 	defer response.Body.Close()
+	err = checkResponse(response)
+	if err != nil {
+		return
+	}
 	responseBody, err = io.ReadAll(response.Body)
 	if err != nil {
 		return
@@ -108,4 +113,16 @@ func (kbn *KibanaAPIClient) Get(query string, startDate, finishDate time.Time) (
 		return
 	}
 	return
+}
+func checkResponse(response *http.Response) error {
+	if response == nil {
+		return fmt.Errorf("could not retrieve data")
+	}
+	if response.StatusCode == http.StatusNotFound {
+		return fmt.Errorf("data not found")
+	}
+	if !(response.StatusCode >= http.StatusOK && response.StatusCode <= http.StatusIMUsed) {
+		return fmt.Errorf("invalid response from api (status = %d '%s')", response.StatusCode, response.Status)
+	}
+	return nil
 }

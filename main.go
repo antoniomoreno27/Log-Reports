@@ -11,10 +11,10 @@ import (
 
 func main() {
 	const (
-		cookie string = `my cookie`
+		cookie string = `my-cookie`
 	)
 	logger.Warnf("Configurating Report")
-	timeWindowSample, err := time.ParseDuration("2h")
+	timeWindowSample, err := time.ParseDuration("5m")
 	if err != nil {
 		logger.Panic("bat time window sample definition")
 	}
@@ -25,7 +25,7 @@ func main() {
 			Path:             "./reports",
 			Query:            "Error retrieving iterator next data",
 			TimeWindowSample: timeWindowSample,
-			StartDate:        time.Now().AddDate(0, 0, -9),
+			StartDate:        time.Now().AddDate(0, 0, -4),
 			FinishDate:       time.Now(),
 		},
 	)
