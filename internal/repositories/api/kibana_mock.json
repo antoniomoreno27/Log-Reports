@@ -1,0 +1,183 @@
+{
+    "took": 350,
+    "timed_out": false,
+    "_shards": {
+        "total": 21,
+        "successful": 21,
+        "skipped": 15,
+        "failed": 0
+    },
+    "hits": {
+        "total": 394853,
+        "max_score": null,
+        "hits": [
+            {
+                "_index": "fury-listing-sort-api-2023.03.17",
+                "_type": "_doc",
+                "_id": "u-IO8YYB7ti3gy9vNEQr",
+                "_score": null,
+                "_source": {
+                    "timestamp": "2023-03-17T19:31:23.659Z",
+                    "tags": {
+                        "container": "application",
+                        "process": "docker",
+                        "level": "error",
+                        "resource": "\"item_reviews\"",
+                        "format": "cumulative",
+                        "version": "1.20.0-rc-1",
+                        "execution_id": "1412671015",
+                        "instance_id": "i-0425ab70c127406ac",
+                        "application": "listing-sort-api",
+                        "scope": "attributes-dumper-2",
+                        "host": "ip-10-50-112-214",
+                        "dump_type": "default",
+                        "attribute": "reviews"
+                    },
+                    "message": "time=\"2023-04-18T20:20:54-04:00\" msg=\"Error retrieving iterator next data >> - ERROR: error parsing wrong data '{ID:0xc00027dca0 SiteID:0xc00027dcd0 SellerReputation:0xc00027dcc0 EffectiveSellerReputation:0xc00027dc90 Reasons:[0xc00027dd50]}'\" [attribute:reputation] [dump_type:delta] [execution_id:1466170507] [format:site] [level:error] [resource:sellers] [site:MLB] "
+                },
+                "fields": {
+                    "timestamp": [
+                        "2023-03-17T19:31:23.659Z"
+                    ]
+                },
+                "highlight": {
+                    "tags.container": [
+                        "@kibana-highlighted-field@application@/kibana-highlighted-field@"
+                    ],
+                    "message": [
+                        "time=\"2023-03-17T15:31:23-04:00\" msg=\"@kibana-highlighted-field@Error@/kibana-highlighted-field@ @kibana-highlighted-field@retrieving@/kibana-highlighted-field@ @kibana-highlighted-field@iterator@/kibana-highlighted-field@ @kibana-highlighted-field@next@/kibana-highlighted-field@ @kibana-highlighted-field@data@/kibana-highlighted-field@ - ERROR: nil item review by item parse: 0xc112a894c0\" [attribute:reviews] [dump_type:default] [execution_id:1412671015] [format:cumulative] [level:error] [resource:\"item_reviews\"]"
+                    ],
+                    "tags.version": [
+                        "@kibana-highlighted-field@1.20.0-rc-1@/kibana-highlighted-field@"
+                    ]
+                },
+                "sort": [
+                    1679081483659
+                ]
+            },
+            {
+                "_index": "fury-listing-sort-api-2023.03.17",
+                "_type": "_doc",
+                "_id": "vOIO8YYB7ti3gy9vNEQr",
+                "_score": null,
+                "_source": {
+                    "timestamp": "2023-03-17T19:31:23.659Z",
+                    "tags": {
+                        "container": "application",
+                        "average": "0 five_star:0 four_star:0 one_star:0 three_star:0 two_star:0",
+                        "process": "docker",
+                        "level": "error",
+                        "resource": "\"item_reviews\"",
+                        "format": "\"total_site\"",
+                        "version": "1.20.0-rc-1",
+                        "execution_id": "1412671015",
+                        "site": "MLB",
+                        "instance_id": "i-0425ab70c127406ac",
+                        "application": "listing-sort-api",
+                        "scope": "attributes-dumper-2",
+                        "host": "ip-10-50-112-214",
+                        "dump_type": "default",
+                        "attribute": "reviews"
+                    },
+                    "message": "time=\"2023-03-17T15:31:23-04:00\" msg=\"Error retrieving iterator next data - ERROR: unmarshal error in safeschema object: &map[id:item_reviews/MLB759246813/reviews reviews_by_item:map[total_reviews:map[average:0 five_star:0 four_star:0 one_star:0 three_star:0 two_star:0]]] - error: json: cannot unmarshal number into Go struct field TotalReview.reviews_by_item.total_reviews.average of type string\" [attribute:reviews] [dump_type:default] [execution_id:1412671015] [format:\"total_site\"] [level:error] [resource:\"item_reviews\"] [site:MLB] "
+                },
+                "fields": {
+                    "timestamp": [
+                        "2023-03-17T19:31:23.659Z"
+                    ]
+                },
+                "highlight": {
+                    "tags.container": [
+                        "@kibana-highlighted-field@application@/kibana-highlighted-field@"
+                    ],
+                    "message": [
+                        "time=\"2023-03-17T15:31:23-04:00\" msg=\"@kibana-highlighted-field@Error@/kibana-highlighted-field@ @kibana-highlighted-field@retrieving@/kibana-highlighted-field@ @kibana-highlighted-field@iterator@/kibana-highlighted-field@ @kibana-highlighted-field@next@/kibana-highlighted-field@ @kibana-highlighted-field@data@/kibana-highlighted-field@ - ERROR: unmarshal error in safeschema object: &map[id:item_reviews/MLB759246813/reviews reviews_by_item:map[total_reviews:map[average:0 five_star:0 four_star:0 one_star:0 three_star:0 two_star:0]]] - error: json: cannot unmarshal number into Go struct field TotalReview.reviews_by_item.total_reviews.average of type string\" [attribute:reviews] [dump_type:default] [execution_id:1412671015] [format:\"total_site\"] [level:error] [resource:\"item_reviews\"] [site:MLB]"
+                    ],
+                    "tags.version": [
+                        "@kibana-highlighted-field@1.20.0-rc-1@/kibana-highlighted-field@"
+                    ]
+                },
+                "sort": [
+                    1679081483659
+                ]
+            },
+            {
+                "_index": "fury-listing-sort-api-2023.03.17",
+                "_type": "_doc",
+                "_id": "vuIO8YYB7ti3gy9vNEQs",
+                "_score": null,
+                "_source": {
+                    "timestamp": "2023-03-17T19:31:23.659Z",
+                    "tags": {
+                        "container": "application",
+                        "average": "0 five_star:0 four_star:0 one_star:0 three_star:0 two_star:0",
+                        "process": "docker",
+                        "level": "error",
+                        "resource": "\"item_reviews\"",
+                        "format": "total",
+                        "version": "1.20.0-rc-1",
+                        "execution_id": "1412671015",
+                        "instance_id": "i-0425ab70c127406ac",
+                        "application": "listing-sort-api",
+                        "scope": "attributes-dumper-2",
+                        "host": "ip-10-50-112-214",
+                        "dump_type": "default",
+                        "attribute": "reviews"
+                    },
+                    "message": "time=\"2023-04-18T20:20:54-04:00\" msg=\"Error retrieving iterator next data >> - ERROR: error parsing wrong data '{ID:0xc0007006f0 SiteID:0xc000700720 SellerReputation:0xc000700710 EffectiveSellerReputation:0xc0007006e0 Reasons:[0xc000700780]}'\" [attribute:reputation] [dump_type:delta] [execution_id:1466170507] [level:error] [resource:sellers] "
+                },
+                "fields": {
+                    "timestamp": [
+                        "2023-03-17T19:31:23.659Z"
+                    ]
+                },
+                "highlight": {
+                    "tags.container": [
+                        "@kibana-highlighted-field@application@/kibana-highlighted-field@"
+                    ],
+                    "message": [
+                        "time=\"2023-03-17T15:31:23-04:00\" msg=\"@kibana-highlighted-field@Error@/kibana-highlighted-field@ @kibana-highlighted-field@retrieving@/kibana-highlighted-field@ @kibana-highlighted-field@iterator@/kibana-highlighted-field@ @kibana-highlighted-field@next@/kibana-highlighted-field@ @kibana-highlighted-field@data@/kibana-highlighted-field@ - ERROR: unmarshal error in safeschema object: &map[id:item_reviews/MLA830459394/reviews reviews_by_item:map[total_reviews:map[average:0 five_star:0 four_star:0 one_star:0 three_star:0 two_star:0]]] - error: json: cannot unmarshal number into Go struct field TotalReview.reviews_by_item.total_reviews.average of type string\" [attribute:reviews] [dump_type:default] [execution_id:1412671015] [format:total] [level:error] [resource:\"item_reviews\"]"
+                    ],
+                    "tags.version": [
+                        "@kibana-highlighted-field@1.20.0-rc-1@/kibana-highlighted-field@"
+                    ]
+                },
+                "sort": [
+                    1679081483659
+                ]
+            },
+            {
+                "_index": "fury-listing-sort-api-2023.03.17",
+                "_type": "_doc",
+                "_id": "t-IO8YYB7ti3gy9vNEQr",
+                "_score": null,
+                "_source": {
+                    "timestamp": "2023-03-17T19:31:23.655Z",
+                    "tags": {
+                        "container": "application",
+                        "average": "0 five_star:0 four_star:0 one_star:0 three_star:0 two_star:0",
+                        "process": "docker",
+                        "level": "error",
+                        "resource": "\"item_reviews\"",
+                        "format": "\"cumulative_site\"",
+                        "version": "1.20.0-rc-1",
+                        "execution_id": "1412671015",
+                        "site": "MLB",
+                        "instance_id": "i-0425ab70c127406ac",
+                        "application": "listing-sort-api",
+                        "scope": "attributes-dumper-2",
+                        "host": "ip-10-50-112-214",
+                        "dump_type": "default",
+                        "attribute": "reviews"
+                    },
+                    "message": "time=\"2023-04-18T20:20:54-04:00\" msg=\"Error retrieving iterator next data >> - ERROR: error parsing wrong data '{ID:0xc005519b40 SiteID:0xc005519b70 SellerReputation:0xc005519b60 EffectiveSellerReputation:0xc005519b30 Reasons:[0xc005519bc0]}'\" [attribute:reputation] [dump_type:delta] [execution_id:1466170507] [level:error] [resource:sellers] "
+                },
+                "fields": {
+                    "timestamp": [
+                        "2023-03-17T19:31:23.655Z"
+                    ]
+                }
+            }
+        ]
+    }
+}

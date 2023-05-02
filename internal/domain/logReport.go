@@ -5,7 +5,8 @@ type LogReport struct {
 	Log  Log `json:"hits"`
 }
 type Log struct {
-	Hits []Hit `json:"hits"`
+	Total *int  `json:"total"`
+	Hits  []Hit `json:"hits"`
 }
 type Hit struct {
 	Source *Source `json:"_source"`

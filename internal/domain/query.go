@@ -35,7 +35,7 @@ type Query struct {
 }
 
 type Bool struct {
-	Must   Must    `json:"must,omitempty"`
+	Must   []Must  `json:"must,omitempty"`
 	Filter []Match `json:"filter,omitempty"`
 }
 

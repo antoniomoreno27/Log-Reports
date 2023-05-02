@@ -6,24 +6,43 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/antoniomoreno27/logs-LS/internal/domain"
+	"github.com/antoniomoreno27/logs-LS/internal/services/logger"
 )
 
 const (
 	KibanaUrl string = "https://furylogs-assorted-17.furycloud.io/elasticsearch/fury-listing-sort-api-*/_search?rest_total_hits_as_int=true&ignore_unavailable=true&ignore_throttled=true&preference=1679926399819&timeout=30000ms"
 )
 
-type KibanaAPIClient struct {
+type kibanaAPIClient struct {
 	Client *http.Client
 	Cookie string
 }
 
-func New(cookie string) *KibanaAPIClient {
-	return &KibanaAPIClient{
-		Client: &http.Client{},
-		Cookie: cookie,
+func NewLogAPIClient(cookie string, mock bool) LogAPIClient {
+	if !mock {
+		return &kibanaAPIClient{
+			Client: &http.Client{},
+			Cookie: cookie,
+		}
+	}
+	return &kibanaAPIClientMock{
+		GetMock: func(query string, startDate, finishDate time.Time) (logReport *domain.LogReport, err error) {
+			logReport = &domain.LogReport{}
+			if file, err := os.ReadFile("./internal/repositories/api/kibana_mock.json"); err == nil {
+				err = json.Unmarshal(file, logReport)
+				if err != nil {
+					return nil, err
+				}
+				return logReport, err
+			} else {
+				logger.Errorf("Couldn`t load mock file: %v", err)
+			}
+			return
+		},
 	}
 }
 
@@ -46,11 +65,13 @@ func buildQueryBody(query string, startDate, finishDate time.Time) (bufferPostBo
 		},
 		Query: domain.Query{
 			Bool: domain.Bool{
-				Must: domain.Must{
-					QueryString: domain.QueryString{
-						AnalizeWildcard: true,
-						Query:           "*",
-						TimeZone:        "America/Bogota",
+				Must: []domain.Must{
+					{
+						QueryString: domain.QueryString{
+							AnalizeWildcard: true,
+							Query:           "*",
+							TimeZone:        "America/Bogota",
+						},
 					},
 				},
 				Filter: []domain.Match{
@@ -78,7 +99,7 @@ func buildQueryBody(query string, startDate, finishDate time.Time) (bufferPostBo
 	bufferPostBody = bytes.NewBuffer(postBody)
 	return
 }
-func (kbn *KibanaAPIClient) Get(query string, startDate, finishDate time.Time) (logReport domain.LogReport, err error) {
+func (kbn *kibanaAPIClient) Get(query string, startDate, finishDate time.Time) (logReport *domain.LogReport, err error) {
 	var (
 		body         *bytes.Buffer
 		request      *http.Request
